@@ -1,0 +1,92 @@
+{
+  "skill_name": "md-to-xmind",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把这个 book-chapter.md 整理成 XMind 能导入的格式。中心主题用"深度学习入门"，所有代码块和引用转成笔记形式。",
+      "expected_output": "XMind-compatible markdown with '深度学习入门' as central topic, chapters as L1, sections as L2, subsections as L3, code blocks and quotes as notes",
+      "files": ["evals/files/book-chapter.md"],
+      "expectations": [
+        "中心主题为'深度学习入门'（唯一的一个 #）",
+        "'第一部分 基础篇'和'第二部分 实战篇'是 ## 一级主题",
+        "代码块 ``` 被转为 > 引用格式作为笔记",
+        "表格被转为纯文本笔记格式",
+        "引用 > 保留为笔记格式",
+        "列表缩进层级正确保留",
+        "不包含原始文档中的 # 以外的多余顶级标题"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "这个 messy-headings.md 里 heading 层级很乱，帮我修复成符合 XMind 导入规范的格式。中心主题用'项目管理知识体系'，把所有跳级的地方补上。",
+      "expected_output": "XMind-compatible markdown with all heading levels made continuous",
+      "files": ["evals/files/messy-headings.md"],
+      "expectations": [
+        "中心主题为'项目管理知识体系'（唯一一个 #）",
+        "所有 heading 层级连续，没有跳级",
+        "原文中的第二个 # 被降级为 ##",
+        "原文中的 ###### 被正确提升/调整到合适的连续层级",
+        "一级主题（##）数量合理，覆盖主要知识领域",
+        "列表正确归属于最近的 heading"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "把这个 list-only.md 整理成 XMind 导入格式。第一行'周会要点'作为中心主题，其他内容按层级组织。引用转为笔记。",
+      "expected_output": "XMind-compatible markdown from list-only content",
+      "files": ["evals/files/list-only.md"],
+      "expectations": [
+        "中心主题为'周会要点 2024-03-15'（唯一一个 #）",
+        "'产品组'、'技术组'、'运营组'为 ## 一级主题",
+        "各组的要点为 - 列表项，归属于对应的一级主题",
+        "缩进列表（如'搜索结果不准确'）正确保留为更深层级",
+        "引用 > 被转为笔记格式",
+        "输出文件中没有任何多余元素"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "帮我创建一个关于「机器学习」的思维导图，包含监督学习、无监督学习、强化学习三大分支。每个分支列出3-5个核心算法，并在每个算法下用列表列出1-2个关键特点。内容风格偏关键词型，层级控制在3层以内。",
+      "expected_output": "XMind-compatible markdown created from scratch with '机器学习' as central topic, 3 main branches, each with 3-5 algorithms and 1-2 features per algorithm",
+      "files": [],
+      "expectations": [
+        "中心主题为'机器学习'（唯一的一个 #）",
+        "'监督学习'、'无监督学习'、'强化学习'为 ## 一级主题",
+        "每个一级主题下有 3-5 个 ### 子主题（核心算法）",
+        "每个算法下有一到两个 - 列表项作为关键特点",
+        "所有内容层级连续（# → ## → ### → - 列表）",
+        "没有跳级现象",
+        "使用关键词型风格，节点文本简短精炼",
+        "内容事实准确（如监督学习包含线性回归、决策树、SVM 等真实算法）"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "帮我做一个「Web 前端学习路线图」的思维导图。从基础到框架，包含：HTML/CSS 基础、JavaScript、前端框架、工程化工具、性能优化五个阶段。每个阶段下用列表写3-4个核心知识点，其中一些知识点可以加粗强调。层级不限，内容越详细越好。",
+      "expected_output": "XMind-compatible markdown created from scratch for a frontend learning roadmap",
+      "files": [],
+      "expectations": [
+        "中心主题为'Web 前端学习路线图'（唯一一个 #）",
+        "五个阶段（基础/JS/框架/工程化/性能）为 ## 一级主题",
+        "每个一级主题下用 - 列表包含 3-4 个核心知识点",
+        "关键术语使用了 **加粗** 格式",
+        "整体结构为线性递进（从基础到高级）",
+        "层级没有跳级"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "把《人类简史》做成思维导图。中心主题是'人类简史'，主要分支按书中的四次革命来：认知革命、农业革命、人类的融合统一、科学革命。每个革命下面用列表列出3个关键要点，其中农业革命下面需要包含一个表格对比狩猎采集vs农业生活。",
+      "expected_output": "XMind-compatible markdown for Sapiens book summary with 4 revolutions as main branches",
+      "files": [],
+      "expectations": [
+        "中心主题为'人类简史'（唯一一个 #）",
+        "四次革命为 ## 一级主题：认知革命、农业革命、人类的融合统一、科学革命",
+        "每个 ## 主题下有 3 个 - 列表要点",
+        "'农业革命'下包含一个表格内容（以笔记形式呈现）",
+        "内容忠于原著事实",
+        "层级连续，没有跳级"
+      ]
+    }
+  ]
+}
