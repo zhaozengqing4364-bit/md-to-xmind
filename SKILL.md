@@ -7,6 +7,8 @@ metadata:
     id: zhaozengqing4364-bit/md-to-xmind
     version: 0.1.0
     schemaVersion: "1"
+    integrity:
+      hash: "sha256:56a54957c6f4bef3fb31b1bc6061bc87a99647113ce10954d0e1cce4ca0ce7ee"
 ---
 
 # MD → XMind 格式整理与创作 Skill
